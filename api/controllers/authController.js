@@ -146,7 +146,7 @@ const forgotPassword = async (data, res) => {
             message: 'A verification code has been sent to your email',
             success: true,
         });
-        
+
     } catch (err) {
         return res.status(500).json({
             message: err.message,
@@ -158,7 +158,28 @@ const forgotPassword = async (data, res) => {
 // Reset Password
 const resetPassword = async (data, res) => {
     try {
-        
+        let { email, code, newPassword } = data;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({
+                message: 'Invalid Email!',
+                success: false
+            });
+        }
+        let isMatch = await bcrypt.compare(code.toString(), user.passwordResetCode);
+        if(isMatch) {
+            const hashedPassword = await bcrypt.hash(newPassword, 20);
+            await user.update({password: hashedPassword}, {passwordResetCode: ''});
+            return res.status(201).json({
+                message: 'Your password has been successfully reset',
+                success: true
+            }); 
+        } else {
+            return res.status(404).json({
+                message: 'Invalid code!',
+                success: false
+            }); 
+        }
     } catch (err) {
         return res.status(500).json({
             message: err.message,
