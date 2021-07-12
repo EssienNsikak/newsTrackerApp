@@ -189,9 +189,24 @@ const resetPassword = async (data, res) => {
 };
 
 // Change Password
-const changePassword = async (data, res) => {
+const changePassword = async (req, res) => {
     try {
-        
+        let { oldPassword, newPassword } = req.body;
+        const user = await User.findById( req.user._id );
+        let isMatch = await bcrypt.compare( oldPassword, user.password );
+        if(isMatch) {
+            const hashedPassword = await bcrypt.hash(newPassword, 20);
+            await user.update({password: hashedPassword});
+            return res.status(201).json({
+                message: 'Your password has been successfully reset',
+                success: true
+            }); 
+        } else {
+            return res.status(404).json({
+                message: 'Your old password is incorrect!',
+                success: false
+            }); 
+        }
     } catch (err) {
         return res.status(500).json({
             message: err.message,
