@@ -198,7 +198,7 @@ const changePassword = async (req, res) => {
             const hashedPassword = await bcrypt.hash(newPassword, 20);
             await user.update({password: hashedPassword});
             return res.status(201).json({
-                message: 'Your password has been successfully reset',
+                message: 'Your password has been updated successfully',
                 success: true
             }); 
         } else {
@@ -223,4 +223,14 @@ const validateEmail = async (email) => {
     } else {
         return false;
     }
+};
+
+
+module.exports = {
+    login,
+    register,
+    verify,
+    forgotPassword,
+    resetPassword,
+    changePassword
 };
