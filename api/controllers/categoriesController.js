@@ -29,7 +29,7 @@ const removeOne = async (req, res) => {
         success: false
       });
     }
-    return res.status(200).json({
+    return res.status(204).json({
       message: 'Category successfully deleted',
       success: true
     });
@@ -110,4 +110,4 @@ module.exports = {
   updateOne,
   getAll,
   getOne
-}
+};
