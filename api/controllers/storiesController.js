@@ -14,7 +14,7 @@ const addOne = async (req, res) => {
     }
     await newRecord.save();
     return res.status(201).json({
-      meassge: 'Story created successfully',
+      message: 'Story created successfully',
       success: true
     });
   } catch (err) {
@@ -68,7 +68,7 @@ const getAll = async (req, res) => {
     const [results, itemCount] = await
     Promise.all([
         Story.find({}) 
-            .populate('categoy', 'title')
+            .populate('category', 'title')
             .sort({createdAt: -1})
             .limit(req.query.limit)
             .skip(req.skip)
