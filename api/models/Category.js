@@ -1,20 +1,20 @@
 const { Schema, model } = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-const CategorySchema = new Schema (
-    {
-        title: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        createdBy: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
-        
+const CategorySchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    { timestamps: true }
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+
+  },
+  { timestamps: true }
 );
 
 CategorySchema.plugin(uniqueValidator);
