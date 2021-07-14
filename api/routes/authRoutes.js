@@ -32,7 +32,7 @@ router.post('/register', validationRules(), validate, async (req, res) => {
       schema: { $ref: '#/definitions/RegisterModel' }
   } */
 
-  await register(req.body, "user", res);
+  await register(req.body, 'user', res);
 });
 
 router.post('/verify', async (req, res) => {
@@ -65,7 +65,7 @@ router.post('/resetPassword', passwordValidationRules(), passwordValidate, async
   await resetPassword(req.body, res);
 });
 
-router.post("/changePassword", ensureAuthenticated, passwordValidationRules(), passwordValidate, async (req, res) => {
+router.post('/changePassword', ensureAuthenticated, passwordValidationRules(), passwordValidate, async (req, res) => {
   /*  #swagger.tags = ['Auth']
       #swagger.security = [{
       "Authorization": []
