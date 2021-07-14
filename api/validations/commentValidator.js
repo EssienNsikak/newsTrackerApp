@@ -2,10 +2,9 @@ const { check, validationResult } = require('express-validator');
 
 const validationRules = () => {
   return [
-    check('newPassword')
-      .trim()
-      .isLength({ min: 6, max: 16 })
-      .withMessage('Password must be between 6 and 16 characters')
+    check('body')
+      .trim().isLength({ min: 2, })
+      .withMessage('Comment must be at least 2 characters long')
   ]
 };
 
