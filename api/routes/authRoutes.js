@@ -8,7 +8,7 @@ const {
   resetPassword,
   changePassword
 } = require('../controllers/authController');
-const { ensureAuthenticated } = require('../middleware/auth-middleware');
+const { ensureAuthenticated } = require('../middleware/authMiddleware');
 const { 
   validationRules: passwordValidationRules, 
   validate: passwordValidate 

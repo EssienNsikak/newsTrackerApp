@@ -13,7 +13,7 @@ const {
   updateOne, 
   getAll, 
   getOne 
-} = require('../controllers/categories-controller');
+} = require('../controllers/categoriesController');
 
 router.get('/categories', async (req, res) => {
   // #swagger.tags = ['Posts']
