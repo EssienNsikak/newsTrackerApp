@@ -2,11 +2,11 @@ const swaggerAutogen = require("swagger-autogen")()
 
 const doc = {
     info: {
-        version: "1.0.0",
-        title: "Rocktech (Video and News App) API",
-        description: "API for the tutorial on building mobile app by <b>Mark's Coding Spot</b> using NodeJS."
+        version: '1.0.0',
+        title: 'NewsHub.ng (Videos and News App) API',
+        description: 'API for the tutorial on building mobile app by <b>Essien Nsikak</b> using NodeJS.'
     },
-    host: "localhost:5000",
+    host: 'localhost:5002',
     basePath: "/",
     schemes: ["http", "https"],
     consumes: ["application/json"],
@@ -49,7 +49,7 @@ const doc = {
             $password: "Password123#", 
         },
         UpdateUserModel: {
-            $name: "John Snow",
+            $name: "Nsikak Essien",
         },
         CategoryModel: {
             $title: "Comedy",
@@ -85,9 +85,9 @@ const doc = {
     }
 };
 
-const outputFile = "./swagger_output.json";
-const endpointFiles = ["./routes/index.js"];
+const outputFile = './swaggerOutput.json';
+const endpointFiles = ['./routes/index.js'];
 
 swaggerAutogen(outputFile, endpointFiles, doc).then(() => {
-    require("./index");
+    require('./index');
 });
