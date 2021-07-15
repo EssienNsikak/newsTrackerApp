@@ -68,13 +68,13 @@ const getAll = async (req, res) => {
     const [results, itemCount] = await
     Promise.all([
         Story.find({}) 
-            .populate('category', 'title')
-            .sort({createdAt: -1})
-            .limit(req.query.limit)
-            .skip(req.skip)
-            .lean()
-            .exec(),
-            Story.count({}),
+          .populate('category', 'title')
+          .sort({createdAt: -1})
+          .limit(req.query.limit)
+          .skip(req.skip)
+          .lean()
+          .exec(),
+          Story.count({}),
     ]);
     const pageCount = Math.ceil(itemCount / req.query.limit);
     return res.status(201).json({
