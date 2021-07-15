@@ -2,10 +2,10 @@
     "swagger": "2.0",
     "info": {
       "version": "1.0.0",
-      "title": "Rocktech (Video and News App) API",
-      "description": "API for the tutorial on building mobile app by <b>Mark's Coding Spot</b> using NodeJS."
+      "title": "NewsHub.ng (Video and News App) API",
+      "description": "API for the tutorial on building mobile app by <b>Essien Nsikak</b> using NodeJS."
     },
-    "host": "localhost:5000",
+    "host": "localhost:5002",
     "basePath": "/",
     "tags": [
       {
