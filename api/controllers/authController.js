@@ -26,6 +26,7 @@ const register = async (data, role, res) => {
     });
 
     await newUser.save();
+    welcomeSender(newUser.email, newUser.name, newUser.verificationCode);
     return res.status(201).json({
       message: 'Account successfully created',
       success: true

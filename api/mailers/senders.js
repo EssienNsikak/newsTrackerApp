@@ -4,7 +4,7 @@ const welcomeSender = (recipient, name, code) => {
   console.log('Called in Sender');
   email
     .send({
-      template: "welcome",
+      template: 'welcome',
       message: {
         to: recipient,
       },
